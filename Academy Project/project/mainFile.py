@@ -1,23 +1,19 @@
-from varInit import varDef
-# from mainFunctions import movingText
-# from mainFunctions import buttonPress
-# from mainFunctions import buttonPricing
-# from mainFunctions import buyingButton
-# from mainFunctions import startGame
-# from mainFunctions import quitGame
-#import gameLoop
+import pygame
+import varInit
+import settings
+import gameLoop
 
-#startGame()
+#Starts Pygame
+pygame.init()
+
+#Defines List
+settings.init()
 
 #Defines Variables
-varDef()
-print(varInit.done)
-
-#Starts Functions
-# movingText()
-# buttonPress()
-# buttonPricing()
-# buyingButton()
+varInit.pygameVar()
 
 #Starts Game Loop
-#gameLoop.mainLoop()
+gameLoop.mainLoop()
+
+#Stop Program
+pygame.quit()

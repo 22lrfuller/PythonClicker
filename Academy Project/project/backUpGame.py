@@ -1,5 +1,4 @@
 from time import sleep
-from multiprocessing import Process
 import pygame
 pygame.init()
 
@@ -60,6 +59,15 @@ BLUE = (0, 0, 255)
 PURPLE = (255, 0, 255)
 TEAL = (75, 240, 190)
 ORANGE = (255, 175, 75)
+
+largeFont = pygame.font.SysFont('Calibri', 30, True, False)
+smallFont = pygame.font.SysFont('Calibri', 13, True, False)
+font = pygame.font.SysFont('Calibri', 20, True, False)
+size = (750, 750)
+screen = pygame.display.set_mode(size)
+clock = pygame.time.Clock()
+pygame.display.set_caption("Pygame Game")
+addingClick = pygame.draw.rect(screen, TEAL, (350, 300, 150, 200))
 
 def movingText(autoClickNum):
     global autoUpgrade1
@@ -191,8 +199,6 @@ def buttonPress():
 
             #Slide Menu Button
             if(slideMenu.collidepoint(pos)):
-                print("This works")
-                print(menuShow)
                 menuShow = True
 
                 if(menuShowVar == 2):
@@ -250,15 +256,6 @@ def buyingButton(price, buttonType):
             screen.blit(font.render("Not Enought Money!", False, BLACK), [145, 190])
         return 0
 
-largeFont = pygame.font.SysFont('Calibri', 30, True, False)
-smallFont = pygame.font.SysFont('Calibri', 13, True, False)
-font = pygame.font.SysFont('Calibri', 20, True, False)
-size = (750, 750)
-screen = pygame.display.set_mode(size)
-clock = pygame.time.Clock()
-pygame.display.set_caption("Pygame Game")
-addingClick = pygame.draw.rect(screen, TEAL, (350, 300, 150, 200))
-
 while not done:
     #Quit Sense
     for event in pygame.event.get():
@@ -271,10 +268,7 @@ while not done:
     screen.fill(LIGHT_BLUE)
     buttonPress()
 
-    print(menuShow)
-
     if(menuShow == True):
-        print("part two")
         for x in range(0, 100):
             slideMenu = pygame.draw.rect(screen, LIGHT_PURPLE, ((0 + x), 25, 100, 50))
             sleep(0.005)
