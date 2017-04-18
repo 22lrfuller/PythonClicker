@@ -84,11 +84,6 @@ def mainLoop():
 
         screen.fill(LIGHT_BLUE)
 
-        #if(menuShow == True):
-            #for x in range(0, 100):
-            #slideMenu = pygame.draw.rect(screen, LIGHT_PURPLE, ((0 + x), 25, 100, 50))
-            #slideMenu = pygame.draw.rect(screen, WHITE, ((0 + x), 25, 100, 50))
-
         #Defining Game Variable
         clickText = font.render("Clicks: " + str(round(settings.pythonVariables['clicks'])), True, BLACK)
         clickUpgrade = font.render("Click Upgrades: " + str(round(settings.pythonVariables['cpc']) - 1), True, BLACK)

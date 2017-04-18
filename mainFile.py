@@ -6,9 +6,6 @@ import gameLoop
 #Starts Pygame
 pygame.init()
 
-#Defines List
-settings.init()
-
 #Defines Variables
 varInit.pygameVar()
 

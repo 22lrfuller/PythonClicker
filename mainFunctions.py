@@ -78,12 +78,12 @@ def backButtonFunc(event, backButton, menuShowArg):
         pos = pygame.mouse.get_pos()
         if(backButtonSwitch == 0):
             if(slideMenu.collidepoint(pos)):
-                menuShowVar += 1
-                if(menuShowVar == 2):
-                    menuShowVar = 0
-                if(menuShowVar == 0):
+                buttonShowVar += 1
+                if(buttonShowVar == 2):
+                    buttonShowVar = 0
+                if(buttonShowVar == 0):
                     menuShow = False
-                if(menuShowVar == 1):
+                if(buttonShowVar == 1):
                     menuShow = True
                 backButtonSwitch = 1
                 return menuShow
