@@ -318,6 +318,15 @@ while not done:
         clickButton = pygame.draw.rect(screen, RED, (140, 210, 200, 200))
         slideMenu = pygame.draw.rect(screen, LIGHT_PURPLE, (0, 25, 100, 50))
 
+        price1 = settings.pythonVariables['price1']
+        price2 = settings.pythonVariables['price2']
+        price3 = settings.pythonVariables['price3']
+        price4 = settings.pythonVariables['price4']
+        price5 = settings.pythonVariables['price5']
+        price6 = settings.pythonVariables['price6']
+        price7 = settings.pythonVariables['price7']
+        price8 = settings.pythonVariables['price8']
+
         if(multiButtonNum == 1):
             buyOneText = font.render("Buy One", True, BLACK)
             screen.blit(buyOneText, [615, 670])

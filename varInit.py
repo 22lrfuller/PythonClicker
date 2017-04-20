@@ -8,6 +8,7 @@ TEAL = (75, 240, 190)
 
 def pygameVar():
 	#Defining Some Variables
+	settings.pythonVariables['cpcButtonAmount'] = 0
 	settings.pythonVariables['backButtonSwitch'] = 0
 	settings.pythonVariables['menuButtonSwitch'] = 0
 	settings.pythonVariables['buttonShowVar'] = 0

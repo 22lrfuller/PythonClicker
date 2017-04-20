@@ -5,7 +5,10 @@ settings.init()
 varInit.pygameVar()
 pygame.init()
 
-#Define Variables
+#This File only Variables
+lastPrice = 0
+
+#Define Variables From Dictionary
 switch = settings.pythonVariables['switch']
 menuButtonSwitch = settings.pythonVariables['menuButtonSwitch']
 backButtonSwitch = settings.pythonVariables['backButtonSwitch']
@@ -71,6 +74,15 @@ smallFont = settings.pythonVariables['smallFont']
 screen = settings.pythonVariables['screen']
 clock = settings.pythonVariables['clock']
 addingClick = settings.pythonVariables['addingClick']
+
+def priceLoop(price, autoClicker):
+    if(autoClicker == "cpcUp"):
+        if(round(int(settings.pythonVariables['clicks'])) >= round(price)):
+            settings.pythonVariables['clicks'] -= round(price)
+            return price * 1.5
+    if(round(int(settings.pythonVariables['clicks'])) >= round(price)):
+        settings.pythonVariables['clicks'] -= round(price)
+        return price * 1.15
 
 def backButtonFunc(event, backButton, menuShowArg):
     global done, backButtonSwitch, menuShowVar, menuShow, pos, buyMultiVar, multiButtonNum, done, settings
@@ -209,6 +221,7 @@ def buttonPress(event, autoClick1, autoClick2, autoClick3, autoClick4, autoClick
                 if(multiButtonNum == 3):
                     buyMultiVar = 10
                 switch = 1
+                settings.pythonVariables['multiButtonNum'] = multiButtonNum
 
             if(backButton.collidepoint(pos)):
                 menuShow = False
@@ -222,27 +235,19 @@ def buttonPricing(price, autoClicker):
     global done, menuShowVar, menuShow, pos, switch, cpcPrice, cpc, buyMultiVar, multiButtonNum, autoClickers1, autoClickers2, autoClickers3, autoClickers4, autoClickers5, autoClickers6, autoClickers7, autoClickers8, movingTextVar1, movingTextVar2, movingTextVar3, movingTextVar4, movingTextVar5, movingTextVar6, movingTextVar7, movingTextVar8, done
 
     if(buyMultiVar == 0):
-        if(round(int(settings.pythonVariables['clicks'])) >= round(price * 1.15)):
-            settings.pythonVariables['clicks'] -= round(price * 1.15)
-            return price * 1.2
-            if(autoClicker == "cpcUp"):
-                return price * 1.5
-    if(buyMultiVar != 0):
-        if(round(int(settings.pythonVariables['clicks'])) >= round(price * 1.15 ** buyMultiVar)):
-            settings.pythonVariables['clicks'] -= round(price * 1.15 ** buyMultiVar)
-            return price * (1.2 ** buyMultiVar)
-            if(autoClicker == "cpcUp"):
-                return price * (1.5 ** buyMultiVar)
+        return priceLoop(price, autoClicker)
     else:
-        return price
+        for i in range(buyMultiVar):
+            return priceLoop(price, autoClicker)
+    return price
 
 def buyingButton(price, buttonType, event):
     global done, menuShowVar, menuShow, pos, switch, cpcPrice, cpc, buyMultiVar, multiButtonNum, autoClickers1, autoClickers2, autoClickers3, autoClickers4, autoClickers5, autoClickers6, autoClickers7, autoClickers8, movingTextVar1, movingTextVar2, movingTextVar3, movingTextVar4, movingTextVar5, movingTextVar6, movingTextVar7, movingTextVar8, done, screen
 
-    if(buttonType == 1 and int(settings.pythonVariables['clicks'])) >= round(price * 1.15 ** buyMultiVar):
+    if(buttonType == 1 and int(settings.pythonVariables['clicks'])) >= price:
         switch = 1
         return 1
-    if(buttonType == 2 and int(settings.pythonVariables['clicks'])) >= (round(cpcPrice * 1.5 ** buyMultiVar)):
+    if(buttonType == 2 and int(settings.pythonVariables['clicks'])) >= price:
         switch = 1
         return 1
     else:

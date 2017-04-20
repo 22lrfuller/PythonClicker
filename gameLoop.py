@@ -86,7 +86,6 @@ def mainLoop():
 
         #Defining Game Variable
         clickText = font.render("Clicks: " + str(round(settings.pythonVariables['clicks'])), True, BLACK)
-        clickUpgrade = font.render("Click Upgrades: " + str(round(settings.pythonVariables['cpc']) - 1), True, BLACK)
         autoUpgrade1 = font.render(str(round(settings.pythonVariables['autoClickers1'])), True, BLACK)
         autoUpgrade2 = font.render(str(round(settings.pythonVariables['autoClickers2'])), True, BLACK)
         autoUpgrade3 = font.render(str(round(settings.pythonVariables['autoClickers3'])), True, BLACK)
@@ -95,6 +94,7 @@ def mainLoop():
         autoUpgrade6 = font.render(str(round(settings.pythonVariables['autoClickers6'])), True, BLACK)
         autoUpgrade7 = font.render(str(round(settings.pythonVariables['autoClickers7'])), True, BLACK)
         autoUpgrade8 = font.render(str(round(settings.pythonVariables['autoClickers8'])), True, BLACK)
+        cpcButtonAmount = font.render(str(settings.pythonVariables['cpcButtonAmount']), True, BLACK)
         clickMe = font.render("Click Me!", True, BLACK)
         buttonName1 = smallFont.render("First", True, BLACK)
         buttonName2 = smallFont.render("Second", True, BLACK)
@@ -112,6 +112,7 @@ def mainLoop():
         buyFiveText = font.render("Buy Five", True, BLACK)
         buyTenText = font.render("Buy Ten", True, BLACK)
         slideMenuText = font.render("Menu", True, BLACK)
+        backbuttonText = font.render("Back", True, BLACK)
 
         #Game Buttons
         if(menuShow == False):
@@ -127,10 +128,9 @@ def mainLoop():
             clickButton = pygame.draw.rect(screen, RED, (140, 210, 200, 200))
             slideMenu = pygame.draw.rect(screen, LIGHT_PURPLE, (0, 0, 100, 50))
 
-            if(multiButtonNum == 1):
+            if(settings.pythonVariables['multiButtonNum'] == 1):
                 buyOneText = font.render("Buy One", True, BLACK)
                 screen.blit(buyOneText, [615, 670])
-
                 buttonPrice1 = font.render(str(round(settings.pythonVariables['price1'])), True, BLACK)
                 buttonPrice2 = font.render(str(round(settings.pythonVariables['price2'])), True, BLACK)
                 buttonPrice3 = font.render(str(round(settings.pythonVariables['price3'])), True, BLACK)
@@ -139,8 +139,9 @@ def mainLoop():
                 buttonPrice6 = font.render(str(round(settings.pythonVariables['price6'])), True, BLACK)
                 buttonPrice7 = font.render(str(round(settings.pythonVariables['price7'])), True, BLACK)
                 buttonPrice8 = font.render(str(round(settings.pythonVariables['price8'])), True, BLACK)
+               
 
-            if(multiButtonNum == 2):
+            if(settings.pythonVariables['multiButtonNum'] == 2):
                 buyFiveText = font.render("Buy Five", True, BLACK)
                 screen.blit(buyFiveText, [615, 670])
 
@@ -153,7 +154,7 @@ def mainLoop():
                 buttonPrice7 = font.render(str(round(settings.pythonVariables['price7'] * (1.15 ** 5))), True, BLACK)
                 buttonPrice8 = font.render(str(round(settings.pythonVariables['price8'] * (1.15 ** 5))), True, BLACK)
 
-            if(multiButtonNum == 3):
+            if(settings.pythonVariables['multiButtonNum'] == 3):
                 buyTenText = font.render("Buy Ten", True, BLACK)
                 screen.blit(buyTenText, [615, 670])
 
@@ -187,9 +188,8 @@ def mainLoop():
 
             #Other Button Names
             screen.blit(clickMe, [200, 300])
-            screen.blit(clickText, [0, 710])
-            screen.blit(clickUpgrade, [0, 730])
-            screen.blit(slideMenuText, [20, 20])
+            screen.blit(clickText, [0, 730])
+            screen.blit(slideMenuText, [25, 15])
             screen.blit(autoUpgrade1, [movingText(1), 45])
             screen.blit(autoUpgrade2, [movingText(2), 120])
             screen.blit(autoUpgrade3, [movingText(3), 195])
@@ -200,7 +200,12 @@ def mainLoop():
             screen.blit(autoUpgrade8, [movingText(8), 570])
 
         if(menuShow == True):
-            backButton = pygame.draw.rect(screen, RED, (0, 100, 100, 50))
+            backButton = pygame.draw.rect(screen, RED, (0, 0, 100, 50))
+            largeCpcButton = pygame.draw.rect(screen, TEAL, (0, 50, 250, 700))
+            smallCpcButton = pygame.draw.rect(screen, TEAL, (100, 0, 150, 50))
+            screen.blit(buttonAddingClick, [130, 5])
+            screen.blit(buttonAddingClick2, [150, 25])
+            screen.blit(backbuttonText, [25, 15])
 
         buttonPress(event, autoClick1, autoClick2, autoClick3, autoClick4, autoClick5, autoClick6, autoClick7, autoClick8, buyMultiButton, clickButton, backButton)
         menuShow = menuButton(event, slideMenu, menuShow)
