@@ -1,3 +1,4 @@
+#This File is Used for Containing Functions
 import pygame
 import settings
 import varInit
@@ -83,9 +84,11 @@ def priceLoop(price, autoClicker):
     if(round(int(settings.pythonVariables['clicks'])) >= round(price)):
         settings.pythonVariables['clicks'] -= round(price)
         return price * 1.15
+    else:
+        return price
 
 def backButtonFunc(event, backButton, menuShowArg):
-    global done, backButtonSwitch, menuShowVar, menuShow, pos, buyMultiVar, multiButtonNum, done, settings
+    global backButtonSwitch, menuShowVar, menuShow, pos
     if(event.type == pygame.MOUSEBUTTONDOWN):
         pos = pygame.mouse.get_pos()
         if(backButtonSwitch == 0):
@@ -104,7 +107,7 @@ def backButtonFunc(event, backButton, menuShowArg):
     return menuShowArg
 
 def menuButton(event, slideMenu, menuShowArg):
-    global done, menuButtonSwitch, menuShowVar, menuShow, pos, buyMultiVar, multiButtonNum, done, settings
+    global menuButtonSwitch, menuShowVar, menuShow, pos
     if(event.type == pygame.MOUSEBUTTONDOWN):
         pos = pygame.mouse.get_pos()
         if(menuButtonSwitch == 0):
@@ -166,7 +169,7 @@ def movingText(autoClickNum):
         return movingTextVar8
 
 def buttonPress(event, autoClick1, autoClick2, autoClick3, autoClick4, autoClick5, autoClick6, autoClick7, autoClick8, buyMultiButton, clickButton, backButton):
-    global done, switch, menuShowVar, menuShow, pos, cpcPrice, cpc, buyMultiVar, multiButtonNum, RAIN1, RAIN2, RAIN3, RAIN4, RAIN5, RAIN6, RAIN7, RAIN8, LIGHT_BLUE, LIGHT_PURPLE, BLACK, WHITE, GREEN, RED, BLUE, PURPLE, TEAL, ORANGE, done, settings
+    global switch, menuShow, pos, cpc, buyMultiVar, multiButtonNum
 
     if(event.type == pygame.MOUSEBUTTONDOWN):
         pos = pygame.mouse.get_pos()
@@ -232,7 +235,7 @@ def buttonPress(event, autoClick1, autoClick2, autoClick3, autoClick4, autoClick
         switch = 0
 
 def buttonPricing(price, autoClicker):
-    global done, menuShowVar, menuShow, pos, switch, cpcPrice, cpc, buyMultiVar, multiButtonNum, autoClickers1, autoClickers2, autoClickers3, autoClickers4, autoClickers5, autoClickers6, autoClickers7, autoClickers8, movingTextVar1, movingTextVar2, movingTextVar3, movingTextVar4, movingTextVar5, movingTextVar6, movingTextVar7, movingTextVar8, done
+    global buyMultiVar
 
     if(buyMultiVar == 0):
         return priceLoop(price, autoClicker)
@@ -242,7 +245,7 @@ def buttonPricing(price, autoClicker):
     return price
 
 def buyingButton(price, buttonType, event):
-    global done, menuShowVar, menuShow, pos, switch, cpcPrice, cpc, buyMultiVar, multiButtonNum, autoClickers1, autoClickers2, autoClickers3, autoClickers4, autoClickers5, autoClickers6, autoClickers7, autoClickers8, movingTextVar1, movingTextVar2, movingTextVar3, movingTextVar4, movingTextVar5, movingTextVar6, movingTextVar7, movingTextVar8, done, screen
+    global switch
 
     if(buttonType == 1 and int(settings.pythonVariables['clicks'])) >= price:
         switch = 1

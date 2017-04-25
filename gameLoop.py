@@ -1,3 +1,4 @@
+#This File Runs the Main Loop that Allows the Game to Update
 import pygame
 from time import sleep
 from mainFunctions import *

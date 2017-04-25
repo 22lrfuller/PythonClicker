@@ -1,8 +1,10 @@
+#This File is Used for Variable Definition
 import pygame
 import settings
 settings.init()
 pygame.init()
 
+#Variables Needed for the Defintion of Other Variables
 screen = pygame.display.set_mode((750, 750))
 TEAL = (75, 240, 190)
 
